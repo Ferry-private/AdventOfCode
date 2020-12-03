@@ -10,3 +10,15 @@ D:\dev\First\myClassLib\obj\Debug\net5.0\myClassLib.csproj.CoreCompileInputs.cac
 D:\dev\First\myClassLib\obj\Debug\net5.0\myClassLib.dll
 D:\dev\First\myClassLib\obj\Debug\net5.0\ref\myClassLib.dll
 D:\dev\First\myClassLib\obj\Debug\net5.0\myClassLib.pdb
+D:\dev\AdventOfCode\myClassLib\bin\Debug\net5.0\myClassLib.deps.json
+D:\dev\AdventOfCode\myClassLib\bin\Debug\net5.0\myClassLib.dll
+D:\dev\AdventOfCode\myClassLib\bin\Debug\net5.0\ref\myClassLib.dll
+D:\dev\AdventOfCode\myClassLib\bin\Debug\net5.0\myClassLib.pdb
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.csprojAssemblyReference.cache
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.GeneratedMSBuildEditorConfig.editorconfig
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.AssemblyInfoInputs.cache
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.AssemblyInfo.cs
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.csproj.CoreCompileInputs.cache
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.dll
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\ref\myClassLib.dll
+D:\dev\AdventOfCode\myClassLib\obj\Debug\net5.0\myClassLib.pdb

@@ -77,11 +77,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\dev\\First\\myClassLib\\myClassLib.csproj",
+      "projectUniqueName": "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj",
       "projectName": "myClassLib",
-      "projectPath": "d:\\dev\\First\\myClassLib\\myClassLib.csproj",
+      "projectPath": "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj",
       "packagesPath": "C:\\Users\\Llani\\.nuget\\packages\\",
-      "outputPath": "d:\\dev\\First\\myClassLib\\obj\\",
+      "outputPath": "D:\\dev\\AdventOfCode\\myClassLib\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Llani\\AppData\\Roaming\\NuGet\\NuGet.Config"

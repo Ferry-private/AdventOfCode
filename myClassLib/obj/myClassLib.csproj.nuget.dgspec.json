@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\dev\\First\\myClassLib\\myClassLib.csproj": {}
+    "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj": {}
   },
   "projects": {
-    "D:\\dev\\First\\myClassLib\\myClassLib.csproj": {
+    "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\dev\\First\\myClassLib\\myClassLib.csproj",
+        "projectUniqueName": "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj",
         "projectName": "myClassLib",
-        "projectPath": "D:\\dev\\First\\myClassLib\\myClassLib.csproj",
+        "projectPath": "D:\\dev\\AdventOfCode\\myClassLib\\myClassLib.csproj",
         "packagesPath": "C:\\Users\\Llani\\.nuget\\packages\\",
-        "outputPath": "D:\\dev\\First\\myClassLib\\obj\\",
+        "outputPath": "D:\\dev\\AdventOfCode\\myClassLib\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Llani\\AppData\\Roaming\\NuGet\\NuGet.Config"

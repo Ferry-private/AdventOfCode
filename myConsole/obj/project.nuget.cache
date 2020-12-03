@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NfSqRfy2LKfUdYHcWe5sTGypsMdSflOswf75AkjA30+kC6WFgmTKns4BBXsGbcUrjm+GbclxPcI4V+2FGeK74Q==",
+  "dgSpecHash": "xQL+WQoj7wrTnyhe0nwL7h4O2UmvqbuR3TaVUEWB2TJXGR0wEqZsBHine0GkdwGs7p3b5kNgmQO+eKiPNJ4vrA==",
   "success": true,
-  "projectFilePath": "D:\\dev\\First\\myConsole\\myConsole.csproj",
+  "projectFilePath": "D:\\dev\\AdventOfCode\\myConsole\\myConsole.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Llani\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\Llani\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512"
