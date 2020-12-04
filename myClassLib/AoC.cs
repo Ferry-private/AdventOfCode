@@ -352,13 +352,14 @@ namespace AoC
                         isValid = Regex.IsMatch(fieldValue,pattern);                        
                     }                    
 
-                    if (isValid) {req.Remove(fieldName);}
-
-                    //Done with Passport check?
-                    if (req.Count == 0)
+                    if (isValid) 
                     {
-                        req["zucht"] = "zo dan";
-                        validPassports++;
+                        req.Remove(fieldName);
+                        //Done with Passport check?
+                        if (req.Count == 0)
+                        {
+                            validPassports++;
+                        }
                     }
                 }                
             } 
