@@ -19,7 +19,11 @@ namespace myConsole
 
             AoC.Day3 day3 = new Day3();
             System.Console.WriteLine("Solution day 3, part 1: "+ day3.Problem1());
-            System.Console.WriteLine("Solution day 3, part 2: "+ day3.Problem2());            
+            System.Console.WriteLine("Solution day 3, part 2: "+ day3.Problem2());  
+
+            AoC.Day4 day4 = new Day4();
+            System.Console.WriteLine("Solution day 4, part 1: "+ day4.Problem1());
+            System.Console.WriteLine("Solution day 4, part 2: "+ day4.Problem2());          
         }
     }
 }

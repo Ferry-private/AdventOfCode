@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace AoC
 {
@@ -78,8 +79,7 @@ namespace AoC
                 };
 
                 numberOfLines++;  
-            }  
-            
+            }              
             file.Close();  
             //System.Console.WriteLine("There were {0} passwords of which {1} were valid", numberOfLines, validPasswords);  
             return validPasswords.ToString();
@@ -203,6 +203,175 @@ namespace AoC
             
             return numberOfTrees;
         }
+    }
+
+    public class Day4
+    {
+        public string Problem1()
+        {        
+            string line; 
+            int validPassports = 0;
+            //List<string> req = new List<string> {"byr","iyr","eyr","hgt","hcl","ecl","pid"};
+            Dictionary<string,string> req = new Dictionary<string,string>();
+            req["byr"] = "x";
+            req["iyr"] = "x";
+            req["eyr"] = "x";
+            req["hgt"] = "x";
+            req["hcl"] = "x";
+            req["pid"] = "x";
+            req["ecl"] = "x";
+
+
+            System.IO.StreamReader file = new System.IO.StreamReader(@"Day4input.txt");  
+            while((line = file.ReadLine()) != null)  
+            {  
+                if (line.Replace(" ","") == String.Empty) 
+                {
+                    //Done with Passport check
+                    if (req.Count == 0)
+                    {
+                        validPassports++;
+                    }
+                    //init for new passportcheck
+                    req["byr"] = "x";
+                    req["iyr"] = "x";
+                    req["eyr"] = "x";
+                    req["hgt"] = "x";
+                    req["hcl"] = "x";
+                    req["pid"] = "x";
+                    req["ecl"] = "x";
+                }
+
+                var fields = line.Split(" ");
+                foreach (var field in fields)
+                {
+                    string found = field.Split(":")[0];
+                    req.Remove(found);
+                }               
+            } 
+
+            if (req.Count == 0)
+            {
+                validPassports++;
+            } 
+            
+            file.Close();  
+            
+            return validPassports.ToString();
+        }
+
+        public string Problem2()
+        {        
+            string line; 
+            int validPassports = 0;
+            Boolean isValid = false;
+            //List<string> req = new List<string> {"byr","iyr","eyr","hgt","hcl","ecl","pid"};
+            Dictionary<string,string> req = new Dictionary<string,string>();
+            req["byr"] = "x";
+            req["iyr"] = "x";
+            req["eyr"] = "x";
+            req["hgt"] = "x";
+            req["hcl"] = "x";
+            req["pid"] = "x";
+            req["ecl"] = "x";
+
+
+            System.IO.StreamReader file = new System.IO.StreamReader(@"Day4input.txt");  
+            while((line = file.ReadLine()) != null)  
+            {  
+                if (line.Replace(" ","") == String.Empty) 
+                {                  
+                    //init for new passportcheck
+                    req["byr"] = "x";
+                    req["iyr"] = "x";
+                    req["eyr"] = "x";
+                    req["hgt"] = "x";
+                    req["hcl"] = "x";
+                    req["pid"] = "x";
+                    req["ecl"] = "x";
+                    continue;
+                }
+
+                var fields = line.Split(" ");
+                foreach (var field in fields)
+                {
+                    
+                    var splitFields = field.Split(":");
+                    string fieldName = splitFields[0];
+                    string fieldValue = splitFields[1];
+                    int fieldValueInt = 0;
+                    try {
+                        fieldValueInt = Int32.Parse(fieldValue);
+                    }
+                    catch
+                    {
+                        //Pech gehad, is geen int
+                    };
+
+                    //Is value of field valid?
+                    if (fieldName == "byr")
+                    {
+                        isValid = ((fieldValueInt >= 1920)&&(fieldValueInt <=2002)&&(fieldValue.Length==4));
+                    } 
+                    else if (fieldName == "iyr")
+                    {
+                        isValid = ((fieldValueInt >= 2010)&&(fieldValueInt <=2020)&&(fieldValue.Length==4));
+                    }
+                    else if (fieldName == "eyr")
+                    {
+                        isValid = ((fieldValueInt >= 2020)&&(fieldValueInt <=2030)&&(fieldValue.Length==4));
+                    }
+                    else if (fieldName == "hgt")
+                    {
+                        if (fieldValue.EndsWith("cm"))
+                        {
+                            fieldValueInt = Int32.Parse(fieldValue.Substring(0,fieldValue.Length-2));
+                            isValid = ((fieldValueInt >= 150)&&(fieldValueInt <=193));
+                        }
+                        else if (fieldValue.EndsWith("in"))
+                        {
+                            fieldValueInt = Int32.Parse(fieldValue.Substring(0,fieldValue.Length-2));
+                            isValid = ((fieldValueInt >= 59)&&(fieldValueInt <=76));
+                        }
+                        else
+                        {
+                            isValid = false;
+                        }
+                    }
+                    else if (fieldName == "hcl")
+                    {
+                        string pattern = @"\#[a-f0-9]{6}";
+                        isValid = Regex.IsMatch(fieldValue,pattern);
+                    }
+                    else if (fieldName == "ecl")
+                    {
+                        string pattern = @"amb|blu|brn|gry|grn|hzl|oth";
+                        isValid = Regex.IsMatch(fieldValue,pattern);
+                    }
+                    else if (fieldName == "pid")
+                    {
+                        string pattern = "[0-9]{9}";
+                        isValid = Regex.IsMatch(fieldValue,pattern);
+                    }                    
+
+                    if (isValid) {req.Remove(fieldName);}
+
+                    //Done with Passport check?
+                    if (req.Count == 0)
+                    {
+                        validPassports++;
+                    }
+                }
+
+                
+            } 
+            
+            file.Close();  
+            
+            return validPassports.ToString();
+        }
+
+
     }
     
 }
