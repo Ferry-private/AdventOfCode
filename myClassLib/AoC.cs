@@ -282,6 +282,7 @@ namespace AoC
                 if (line.Replace(" ","") == String.Empty) 
                 {                  
                     //init for new passportcheck
+                    req = new Dictionary<string,string>();
                     req["byr"] = "x";
                     req["iyr"] = "x";
                     req["eyr"] = "x";
@@ -295,7 +296,7 @@ namespace AoC
                 var fields = line.Split(" ");
                 foreach (var field in fields)
                 {
-                    
+                    isValid = false;
                     var splitFields = field.Split(":");
                     string fieldName = splitFields[0];
                     string fieldValue = splitFields[1];
@@ -306,6 +307,7 @@ namespace AoC
                     if (fieldName == "byr")
                     {
                         isValid = ((fieldValueInt >= 1920)&&(fieldValueInt <=2002)&&(fieldValue.Length==4));
+                        
                     } 
                     else if (fieldName == "iyr")
                     {
@@ -321,11 +323,13 @@ namespace AoC
                         {
                             fieldValueInt = Int32.Parse(fieldValue.Substring(0,fieldValue.Length-2));
                             isValid = ((fieldValueInt >= 150)&&(fieldValueInt <=193));
+                            
                         }
                         else if (fieldValue.EndsWith("in"))
                         {
                             fieldValueInt = Int32.Parse(fieldValue.Substring(0,fieldValue.Length-2));
                             isValid = ((fieldValueInt >= 59)&&(fieldValueInt <=76));
+                            if (isValid) {Console.WriteLine(fieldValue);}
                         }
                         else
                         {
@@ -336,7 +340,6 @@ namespace AoC
                     {
                         string pattern = @"^\#[a-f0-9]{6}$";
                         isValid = Regex.IsMatch(fieldValue,pattern);
-
                     }
                     else if (fieldName == "ecl")
                     {
@@ -345,9 +348,8 @@ namespace AoC
                     }
                     else if (fieldName == "pid")
                     {
-                        string pattern = "^[0-9]{9}$";
-                        isValid = Regex.IsMatch(fieldValue,pattern);
-                        if (isValid) {Console.WriteLine(fieldValue);}
+                        string pattern = @"^[0-9]{9}$";
+                        isValid = Regex.IsMatch(fieldValue,pattern);                        
                     }                    
 
                     if (isValid) {req.Remove(fieldName);}
@@ -355,11 +357,10 @@ namespace AoC
                     //Done with Passport check?
                     if (req.Count == 0)
                     {
+                        req["zucht"] = "zo dan";
                         validPassports++;
                     }
-                }
-
-                
+                }                
             } 
             
             file.Close();  
