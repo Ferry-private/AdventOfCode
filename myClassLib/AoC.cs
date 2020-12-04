@@ -300,13 +300,7 @@ namespace AoC
                     string fieldName = splitFields[0];
                     string fieldValue = splitFields[1];
                     int fieldValueInt = 0;
-                    try {
-                        fieldValueInt = Int32.Parse(fieldValue);
-                    }
-                    catch
-                    {
-                        //Pech gehad, is geen int
-                    };
+                    Int32.TryParse(fieldValue,out fieldValueInt);
 
                     //Is value of field valid?
                     if (fieldName == "byr")
@@ -340,18 +334,20 @@ namespace AoC
                     }
                     else if (fieldName == "hcl")
                     {
-                        string pattern = @"\#[a-f0-9]{6}";
+                        string pattern = @"^\#[a-f0-9]{6}$";
                         isValid = Regex.IsMatch(fieldValue,pattern);
+
                     }
                     else if (fieldName == "ecl")
                     {
-                        string pattern = @"amb|blu|brn|gry|grn|hzl|oth";
+                        string pattern = @"^(amb|blu|brn|gry|grn|hzl|oth)$";
                         isValid = Regex.IsMatch(fieldValue,pattern);
                     }
                     else if (fieldName == "pid")
                     {
-                        string pattern = "[0-9]{9}";
+                        string pattern = "^[0-9]{9}$";
                         isValid = Regex.IsMatch(fieldValue,pattern);
+                        if (isValid) {Console.WriteLine(fieldValue);}
                     }                    
 
                     if (isValid) {req.Remove(fieldName);}
