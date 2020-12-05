@@ -388,7 +388,7 @@ namespace AoC
             return sl.GetByIndex(sl.Count-1).ToString();
       }
 
-      /*public string Problem2()
+      public string Problem2()
       {
           SortedList sl = new SortedList();
           string line;
@@ -400,10 +400,22 @@ namespace AoC
                 sl.Add(seatId,seatId);
             } 
             file.Close();  
+            //Filled sorted list with SeatId's.
+            //Loop through it to differ by 2
 
+            int prevSeatId = 0;
+            foreach (int item in sl.Values)
+            {
+                if (item - prevSeatId == 2)
+                {
+                    Console.WriteLine($"Found my seat! {item-1}");
+                    return (item-1).ToString();
+                }
+                prevSeatId = item;
+            }
         
-            return sl.GetByIndex(sl.Count-1).ToString();
-      }*/
+            return "No Seat found";
+      }
 
       int CalculateSeatId(string boardingpass)
       {
@@ -411,11 +423,6 @@ namespace AoC
         int maxRow = 127;
         int minSeat = 0;
         int maxSeat = 7;
-
-        if (boardingpass =="FBFBBBBRLR")
-        {
-            System.Console.WriteLine("break");
-        }
 
         for (int i = 0; i < boardingpass.Length; i++)
         {
@@ -436,10 +443,7 @@ namespace AoC
                 minSeat = minSeat+((maxSeat-minSeat+1)/2);
             }     
         }
-        if ((minRow*8)+minSeat==364)
-        {
-            System.Console.WriteLine("break");
-        }
+
       return (minRow*8)+minSeat;
       }  
   }
