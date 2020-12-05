@@ -329,7 +329,6 @@ namespace AoC
                         {
                             fieldValueInt = Int32.Parse(fieldValue.Substring(0,fieldValue.Length-2));
                             isValid = ((fieldValueInt >= 59)&&(fieldValueInt <=76));
-                            if (isValid) {Console.WriteLine(fieldValue);}
                         }
                         else
                         {
@@ -371,5 +370,78 @@ namespace AoC
 
 
     }
-    
+
+  public class Day5
+  {
+      public string Problem1()
+      {
+          SortedList sl = new SortedList();
+          string line;
+
+          System.IO.StreamReader file = new System.IO.StreamReader(@"Day5input.txt");  
+          while((line = file.ReadLine()) != null)  
+            {  
+                int seatId = CalculateSeatId(line);
+                sl.Add(seatId,seatId);
+            } 
+            file.Close();  
+            return sl.GetByIndex(sl.Count-1).ToString();
+      }
+
+      /*public string Problem2()
+      {
+          SortedList sl = new SortedList();
+          string line;
+
+          System.IO.StreamReader file = new System.IO.StreamReader(@"Day5input.txt");  
+          while((line = file.ReadLine()) != null)  
+            {  
+                int seatId = CalculateSeatId(line);
+                sl.Add(seatId,seatId);
+            } 
+            file.Close();  
+
+        
+            return sl.GetByIndex(sl.Count-1).ToString();
+      }*/
+
+      int CalculateSeatId(string boardingpass)
+      {
+        int minRow = 0;
+        int maxRow = 127;
+        int minSeat = 0;
+        int maxSeat = 7;
+
+        if (boardingpass =="FBFBBBBRLR")
+        {
+            System.Console.WriteLine("break");
+        }
+
+        for (int i = 0; i < boardingpass.Length; i++)
+        {
+            if (boardingpass[i].ToString() == "B")
+            {
+                minRow = minRow+((maxRow-minRow+1)/2);
+            }
+            else if (boardingpass[i].ToString() == "F")
+            {
+                maxRow = maxRow-(maxRow-minRow+1)/2;
+            }
+            else if (boardingpass[i].ToString() == "L")        
+            {
+                maxSeat = maxSeat-((maxSeat-minSeat+1)/2);
+            }
+            else if (boardingpass[i].ToString() == "R")
+            {
+                minSeat = minSeat+((maxSeat-minSeat+1)/2);
+            }     
+        }
+        if ((minRow*8)+minSeat==364)
+        {
+            System.Console.WriteLine("break");
+        }
+      return (minRow*8)+minSeat;
+      }  
+  }
+  
 }
