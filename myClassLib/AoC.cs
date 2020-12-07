@@ -5,6 +5,26 @@ using System.Text.RegularExpressions;
 
 namespace AoC
 {
+
+    public class Shared
+    {
+        public static List<string> ReadFromFile(string filename)
+        {
+            string line;  
+            List<string> inputFromFile = new List<string>();
+                        
+            // Read the file
+            System.IO.StreamReader file = new System.IO.StreamReader(filename);  
+            while((line = file.ReadLine()) != null)  
+            {  
+               inputFromFile.Add(line);
+            }              
+            file.Close(); 
+
+            return inputFromFile;
+        }
+            
+    }
     public class Day1
     {
         
@@ -408,7 +428,7 @@ namespace AoC
             {
                 if (item - prevSeatId == 2)
                 {
-                    Console.WriteLine($"Found my seat! {item-1}");
+                    //Console.WriteLine($"Found my seat! {item-1}");
                     return (item-1).ToString();
                 }
                 prevSeatId = item;
@@ -448,4 +468,91 @@ namespace AoC
       }  
   }
   
-}
+    public class Day6
+ {   
+        public string Problem1()
+        {
+            var inputArray = Shared.ReadFromFile("Day6input.txt");
+            List<string> uniqueList = new List<string>();
+            int totalRightUniqueAnswers = 0;
+            string uniqueThisGroup = String.Empty;
+
+            foreach (var line in inputArray)
+            {
+                if (line.Trim().Length > 0)
+                {
+                    //get line and parse it
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        if (!(uniqueThisGroup.Contains(line[i])))
+                        {
+                            uniqueThisGroup += line[i];
+                        }               
+                        
+                    }
+                    uniqueList.Add(uniqueThisGroup);
+                }
+                else
+                {
+                    //Lege regel, dus groep afsluiten en volgende groep
+                    totalRightUniqueAnswers += uniqueThisGroup.Length;
+                    uniqueThisGroup = String.Empty;
+                }
+                
+            }
+
+            totalRightUniqueAnswers += uniqueThisGroup.Length;
+
+            return totalRightUniqueAnswers.ToString();
+        }
+
+        public string Problem2()
+        {
+            List<string> input = Shared.ReadFromFile("Day6input.txt");
+            string matchingAnswers = String.Empty;
+            int solutionSum = 0;
+
+            for (int i = 0; i < input.Count; i++)
+            {
+                //First line of group
+                if ((i==0) || (input[i-1].Trim()==String.Empty))
+                {
+                    //Eerste regel van een group.
+                    matchingAnswers = input[i];
+                }
+                else if (input[i].Trim().Length ==0)
+                {        
+                    //Group divider            
+                    continue;
+                } 
+                else
+                {
+                    //Niet de eerste regel van een group
+                    string prevMatchingAnswers = matchingAnswers;
+                    matchingAnswers = String.Empty;
+                    for (int j = 0; j < prevMatchingAnswers.Length; j++)
+                    {
+                        if (input[i].Contains(prevMatchingAnswers[j]))
+                        {
+                            matchingAnswers += prevMatchingAnswers[j];
+                        }
+                    }   
+                }
+
+                //Last line of group
+                if ((i == (input.Count-1)) || (input[i+1].Trim()==String.Empty))
+                {
+                    //Laatste regel van deze group
+                    solutionSum += matchingAnswers.Length;
+                    //Console.WriteLine($"{matchingAnswers}: {matchingAnswers.Length}");
+                    matchingAnswers = String.Empty;
+                }
+            }
+            return solutionSum.ToString();
+        }
+    } //Close class Day6
+
+
+    
+   
+} //Close Namespace
