@@ -32,6 +32,10 @@ namespace myConsole
             AoC.Day6 day6 = new Day6();
             System.Console.WriteLine("Solution day 6, part 1: "+ day6.Problem1());
             System.Console.WriteLine("Solution day 6, part 2: "+ day6.Problem2()); 
+
+            AoC.Day7 day7 = new Day7();
+            System.Console.WriteLine("Solution day 7, part 1: "+ day7.Problem1());
+            //System.Console.WriteLine("Solution day 7, part 2: "+ day7.Problem2()); 
         }
     }
 }

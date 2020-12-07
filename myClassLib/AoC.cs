@@ -553,6 +553,43 @@ namespace AoC
     } //Close class Day6
 
 
-    
+    public class Day7
+    {
+        public string Problem1()
+        {
+            var input = Shared.ReadFromFile("Day7input.txt");
+            List<string> newLevelOfBagsFound = new List<string>();
+            List<string> bagsZoeken = new List<string>();
+            List<string> allFoundBags = new List<string>();
+
+            bagsZoeken.Add("shiny gold bag");
+
+            while (bagsZoeken.Count > 0)
+            {
+                foreach (string bagName in bagsZoeken)
+                {
+                    for (int i = 0; i < input.Count; i++)
+                    {
+                        if (input[i].Split("contain")[1].Contains(bagName))
+                        {
+                            string bagFound = input[i].Split("contain")[0].Replace("bags","bag").Trim();
+                            if ((!(allFoundBags.Contains(bagFound))) && (!(newLevelOfBagsFound.Contains(bagFound))))
+                            {
+                                newLevelOfBagsFound.Add(bagFound);    
+                            }                            
+                        }
+                    }
+                }
+                foreach (string bagName in newLevelOfBagsFound)
+                {
+                    allFoundBags.Add(bagName);
+                }
+                bagsZoeken = newLevelOfBagsFound;
+                newLevelOfBagsFound = new List<string>();
+            }
+
+            return allFoundBags.Count.ToString();
+        }
+    }
    
 } //Close Namespace
