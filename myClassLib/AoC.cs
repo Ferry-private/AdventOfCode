@@ -590,6 +590,29 @@ namespace AoC
 
             return allFoundBags.Count.ToString();
         }
+   
+        public string Problem2()
+        {
+           
+            var input = Shared.ReadFromFile("Day7input.txt");
+            //Build tree structure
+
+            foreach (string rule in input)
+            {
+                //Parse line
+                var ruleArray = rule.Replace("bags","bag").Replace("contains","contain").Trim().Split("contain");
+                string parent = ruleArray[0].Trim();
+                var childs = ruleArray[1].Split(", ");
+
+
+
+            }
+
+
+            return "0";
+         
+        }
     }
    
+
 } //Close Namespace
